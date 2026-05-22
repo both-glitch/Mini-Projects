@@ -21,9 +21,9 @@ def create(user):
             continue
         cur.execute("INSERT INTO Account(User, Pass) VALUES(?,?)", (user, st_pass))
         print("Sucessfully Created")
+        con.commit()
         break
     return True
-    con.commit()
 
 def login(user,st_pass):
     cur.execute("SELECT * FROM Account WHERE User=? ", (user,))
