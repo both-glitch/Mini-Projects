@@ -1,11 +1,33 @@
 import sqlite3
+import re      
 
-con = sqlite3.connect("Login.sqlite")
+con = sqlite3.connect("c:/both/30day/resume/Login.sqlite")
 cur = con.cursor()
 
 cur.execute("DROP TABLE IF EXISTS Artist")
 
 cur.execute("CREATE TABLE IF NOT EXISTS Account(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, User TEXT, Pass Text)")
+def pw_strength():
+    while True:
+        st_pass = input("Password: ")
+        if " " in st_pass:
+            print("No Space")
+            continue
+        if len(st_pass) <= 5 or len(re.findall("[^a-zA-Z0-9]",st_pass))==0:
+            print("Password should be longer than 5 and contain special character")
+            continue
+        if len(re.findall("[0-9]",st_pass))<1:
+            print("Password should contain number")
+            continue
+        if len(re.findall("[a-z]",st_pass))<1:
+            print("Password should contain alphabet")
+            continue
+        cf_pass = input("Confirm Password: ")
+        if st_pass != cf_pass:
+            print("Password do not match")
+            continue
+        break
+    return cf_pass
 
 def create(user):
     cur.execute("SELECT * FROM Account WHERE User = ?", (user,))
@@ -13,16 +35,10 @@ def create(user):
     if row is not None:
         print("User already exist")
         return False
-    while True:
-        st_pass = input("Password: ")
-        cf_pass = input("Confirm Password: ")
-        if st_pass != cf_pass:
-            print("Password do not match")
-            continue
-        cur.execute("INSERT INTO Account(User, Pass) VALUES(?,?)", (user, st_pass))
-        print("Sucessfully Created")
-        con.commit()
-        break
+    st_pass = pw_strength()
+    cur.execute("INSERT INTO Account(User, Pass) VALUES(?,?)", (user, st_pass))
+    print("Sucessfully Created")
+    con.commit()
     return True
 
 def login(user,st_pass):
