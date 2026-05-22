@@ -1,7 +1,7 @@
 import sqlite3
 import re      
 
-con = sqlite3.connect("c:/both/30day/resume/Login.sqlite")
+con = sqlite3.connect("Login.sqlite")
 cur = con.cursor()
 
 cur.execute("DROP TABLE IF EXISTS Artist")
@@ -35,10 +35,23 @@ def create(user):
     if row is not None:
         print("User already exist")
         return False
+<<<<<<< HEAD
     st_pass = pw_strength()
     cur.execute("INSERT INTO Account(User, Pass) VALUES(?,?)", (user, st_pass))
     print("Sucessfully Created")
     con.commit()
+=======
+    while True:
+        st_pass = input("Password: ")
+        cf_pass = input("Confirm Password: ")
+        if st_pass != cf_pass:
+            print("Password do not match")
+            continue
+        cur.execute("INSERT INTO Account(User, Pass) VALUES(?,?)", (user, st_pass))
+        print("Sucessfully Created")
+        con.commit()
+        break
+>>>>>>> 033072c4af4fd01d8b500b0076bd33deec746950
     return True
 
 def login(user,st_pass):
