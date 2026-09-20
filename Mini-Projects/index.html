@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Password Strength Checker</title>
+
+    <!-- Connect CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="checker-card">
+
+            <div class="icon">🔐</div>
+
+            <h1>Password Strength Checker</h1>
+            <p class="subtitle">Create a stronger password</p>
+
+            <div class="form-group">
+                <label for="password-label">Password</label>
+
+                <input
+                    type="password"
+                    id="password-input"
+                    class="password-field"
+                    placeholder="Enter your password"
+                >
+            </div>
+
+            <div class="strength-section">
+                <div class="strength-info">
+                    <span>Strength:</span>
+                    <span id="strength-text">-</span>
+                </div>
+
+                <div class="strength-bar">
+                    <div class="strength-fill"></div>
+                </div>
+            </div>
+
+            <div class="requirements">
+                <h3>Password requirements</h3>
+
+                <ul>
+                    <li class="requirement">
+                        <span class="check-icon" id="eight-char">○</span>
+                        At least 8 characters
+                    </li>
+
+                    <li class="requirement">
+                        <span class="check-icon" id="upper-char">○</span>
+                        One uppercase letter
+                    </li>
+
+                    <li class="requirement">
+                        <span class="check-icon" id="lower-char">○</span>
+                        One lowercase letter
+                    </li>
+
+                    <li class="requirement">
+                        <span class="check-icon" id="number-char">○</span>
+                        One number
+                    </li>
+                </ul>
+            </div>
+
+            <button id="check-button" class="check-btn">
+                Check Password
+            </button>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
