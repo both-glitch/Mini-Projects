@@ -1,1 +1,1 @@
-Checking password strength with html, css and js
+Password Strength Checker: https://both-glitch.github.io/Mini-Projects/
