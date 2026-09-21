@@ -27,10 +27,23 @@ body {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
-.icon {
-    font-size: 32px;
-    text-align: center;
-    margin-bottom: 12px;
+.key {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+    background: #f3e8ff;
+    color: #7c3aed;
+}
+
+.key svg {
+    width: 24px;
+    height: 24px;
 }
 
 h1 {
@@ -55,6 +68,21 @@ label {
     font-weight: 600;
     margin-bottom: 8px;
 }
+.password-input {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 0 10px;
+}
+
+.password-input input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    padding: 12px 0;
+}
 
 .password-field {
     width: 100%;
@@ -67,7 +95,32 @@ label {
 
 .password-field:focus {
     border-color: #7c3aed;
-    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12);
+}
+#toggle-password {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.eye-icon-hide {
+    width: 17.5px;
+    height: 17.5px;
+    display: block;
+}
+
+.eye-icon-show {
+    width: 17.5px;
+    height: 17.5px;
+    display: none;
+}
+
+#toggle-password:hover{
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 5px;
+    color: #64748b;
 }
 
 .strength-section {

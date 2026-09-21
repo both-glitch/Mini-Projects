@@ -1,10 +1,27 @@
 const checkButton = document.getElementById("check-button");
+const toggleButton = document.getElementById("toggle-password");
+
+toggleButton.addEventListener("click", function(){
+    const getPassword = document.getElementById("password-input");
+    const hideSvg = document.querySelector(".eye-icon-hide");
+    const showSvg = document.querySelector(".eye-icon-show");
+    if(getPassword.type == "password"){
+        getPassword.type = "text";
+        hideSvg.style.display = "none";
+        showSvg.style.display = "block";
+    } else {
+        getPassword.type = "password";
+        showSvg.style.display = "none";
+        hideSvg.style.display = "block";
+    }
+}
+);
 
 checkButton.addEventListener("click", function(){
     const getPassword = document.getElementById("password-input").value;
     const strengthText = document.getElementById("strength-text");
     const bar = document.querySelector(".strength-fill");
-    const valid = true;
+    let valid = true;
     const checks = {
         lengths: getPassword.length >= 8,
         lowercase: /[a-z]/.test(getPassword),
@@ -26,11 +43,15 @@ checkButton.addEventListener("click", function(){
     }
     else if (passed == 0){
         strengthText.textContent = "Please enter password";
-        strengthText.style.color = "Red";
+        strengthText.style.color = "Red"
         setTimeout(() => {
             strengthText.style.color = "#64748b";
             strengthText.textContent = "-";
         }, 2000)
+        const defaultIcon = document.querySelectorAll(".check-icon")
+            for(let i = 0 ; i < defaultIcon.length; i++){
+                defaultIcon[i].style.color = "#64748b";
+            }
         valid = false;
     }
 
@@ -42,24 +63,24 @@ checkButton.addEventListener("click", function(){
     if(valid){
         if (checks.lengths){
         length.style.color = "#1cbd57";
-    }else{
-        length.style.color = "#bd1c1c";
-    }
-    if (checks.uppercase){
-        upper.style.color = "#1cbd57";
-    }else{
-        upper.style.color = "#bd1c1c";
-    }
-    if (checks.lowercase){
-        lower.style.color = "#1cbd57";
-    }else{
-        lower.style.color = "#bd1c1c";
-    }
-    if (checks.number){
-        number.style.color = "#1cbd57";
-    }else{
-        number.style.color = "#bd1c1c";
-    }
+        }else{
+            length.style.color = "#bd1c1c";
+        }
+        if (checks.uppercase){
+            upper.style.color = "#1cbd57";
+        }else{
+            upper.style.color = "#bd1c1c";
+        }
+        if (checks.lowercase){
+            lower.style.color = "#1cbd57";
+        }else{
+            lower.style.color = "#bd1c1c";
+        }
+        if (checks.number){
+            number.style.color = "#1cbd57";
+        }else{
+            number.style.color = "#bd1c1c";
+        }
     }
 }
 );
